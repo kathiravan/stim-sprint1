@@ -1,0 +1,41 @@
+<div class="form-group">
+  <label for="tsBillToAddress">Bill To Address</label>
+  <input type="text" value="{{tnsaccountbilladdress.customerBillAddress1}}" name="tsBillToAddress1" class="form-control " placeholder="Address Line 1" />
+</div>
+<div class="form-group">
+  <label for="tsBillToAddress2">&nbsp;</label>
+  <input type="text" value="{{tnsaccountbilladdress.customerBillAddress2}}" name="tsBillToAddress2" class="form-control" placeholder="Address Line 2" />
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <label for="tsCity">City</label>
+          <input type="text" value="{{tnsaccountbilladdress.customerBillCity}}" name="tsCity" class="form-control " />
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <label for="tsPostalCode">Postal Code</label>
+          <input type="text" value="{{tnsaccountbilladdress.customerBillZip}}" class="form-control" name="tsPostalCode" />
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <label for="tsState">State</label>
+          <input type="text" value="{{tnsaccountbilladdress.customerBillState}}" class="form-control" name="tsState"  />
+          <span class="fa fa-caret-down readonly-dropdown"></span>
+          <!--<select id="startstate" class="form-control" name="startstate" [(ngModel)]="p2pstate">
+              <option *ngFor="let c of states" value={{c.name}}>{{c.name}}</option>
+          </select>-->
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <label for="tsCountry1">Country</label>
+          <input type="text" value="{{tnsaccountbilladdress.customerBillCountry}}" class="form-control" name="tsCountry1" />
+          <span class="fa fa-caret-down readonly-dropdown"></span>
+      </div>
+  </div>
+</div>
