@@ -1,0 +1,51 @@
+<div class="form-group">
+    <label>&nbsp;</label>
+    <h4 class="subtitle">Reference Numbers</h4>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsBosContract">BOS Contract#</label>
+            <input type="text" value="{{tnsaccountreference.bosContract}}" name="tsBosContract" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsFmBosContract">FM BOS Contract</label>
+            <input type="text" value="{{tnsaccountreference.fmbosContract}}" name="tsFmBosContract" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsAccRef">Account Reference #</label>
+            <input type="text" value="{{tnsaccountreference.custRefNumber}}" name="tsAccRef" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsCarrierPro">Carrier Pro #</label>
+            <input type="text" value="{{tnsaccountreference.carrierProNbr}}" name="tsCarrierPro" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsPo">PO #</label>
+            <input type="text" value="{{tnsaccountreference.pONumber}}" name="tsPo" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsBillLading">Bill of Lading #</label>
+            <input type="text" name="tsBillLading" class="form-control readonly-textbox" readonly />
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label>&nbsp;</label>
+    <label for="tsClaimField" class="checkbox-right"><span>Claim Field</span><input type="checkbox" name="tsClaimField" value="{{tnsaccountreference.claimFlag}}" class="form-control" checked="checked" disabled /></label>
+
+</div>

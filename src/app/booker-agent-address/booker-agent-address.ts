@@ -4,6 +4,8 @@ export class accountbookeraddress {
     public customerBookerContactName1: string;    
     public customerBookerPhone: string;
     public customerBookerExtn: string;
+    public customerBookersalesrep: string;
+    public customerBookerAccountRef: string;
 
     constructor(){
         this.customerBookerId = 0;
@@ -11,5 +13,7 @@ export class accountbookeraddress {
         this.customerBookerContactName1 = "";
         this.customerBookerPhone = "";
         this.customerBookerExtn = "";
+        this.customerBookersalesrep = "";
+        this.customerBookerAccountRef = "";
     }
 }

@@ -1,4 +1,5 @@
 export class OrderInfo {
+  
  public bookerName: string;
  public bosContract: string;
  public carrierProNbr: string;
@@ -27,7 +28,30 @@ export class OrderInfo {
  public scacid: string;
  public serviceLevelID: number;
 
+ public partnerId:number;
+ public performingPartner:string;
+ public partnerAddress1:string;
+ public partnerAddress2:string;
+ public partnerCity:string;
+ public partnerStateId:string;
+ public partnerZip:string;
+ public partnerMainPhone:string;
+ public partnerMainFax:string;
+ public partnerContact:string;
+ public partnerEmail:string;
+ public partnerCountryId:number;
+ public partnerStateName:string;
+ public projectid:number;
+ public salesPersonName:string;
+ public cbCountryId:number;
+ public cbStateName:string;
+ public cbEmail:string;
+ public cbCountryName:string;
+ public countryName:string;
+ public partnerCountryName:string;
+
  constructor(){
+
   this.bookerName="";
   this.bosContract = "";
   this.carrierProNbr = "";
@@ -54,7 +78,29 @@ export class OrderInfo {
   this.pickupMiles = -1;
   this.salesrep = "";
   this.scacid = "";
-  this.serviceLevelID = -1;     
+  this.serviceLevelID = -1;
+  
+  this.partnerId=-1;
+  this.performingPartner="";
+  this.partnerAddress1="";
+  this.partnerAddress2="";
+  this.partnerCity="";
+  this.partnerStateId="";
+  this.partnerZip="";
+  this.partnerMainPhone="";
+  this.partnerMainFax="";
+  this.partnerContact="";
+  this.partnerEmail="";
+  this.partnerCountryId=-1;
+  this.partnerStateName="";
+  this.projectid=-1;
+  this.salesPersonName="";
+  this.cbCountryId=-1;
+  this.cbStateName="";
+  this.cbEmail="";
+  this.cbCountryName="";
+  this.countryName="";
+  this.partnerCountryName="";
 }
   }
 

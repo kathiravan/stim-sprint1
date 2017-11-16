@@ -17,6 +17,8 @@ import {AccountBillAddressService} from './account-bill-address/account-bill-add
 import {AccountBookerAddressService} from './booker-agent-address/booker-agent-address.service';
 import {OrderInfoService} from './order.service';
 import { ContractTemplateInfoComponent } from './contract-template-info/contract-template-info.component';
+import { AccountReferenceComponent } from './account-reference/account-reference.component';
+import { AccountPartnerSummaryComponent } from './account-partner-summary/account-partner-summary.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ContractTemplateInfoComponent } from './contract-template-info/contract
     AccountAddressComponent,
     BookerAgentAddressComponent,
     AccountBillAddressComponent,
-    ContractTemplateInfoComponent
+    ContractTemplateInfoComponent,
+    AccountReferenceComponent,
+    AccountPartnerSummaryComponent
   ],
   imports: [
     BrowserModule,

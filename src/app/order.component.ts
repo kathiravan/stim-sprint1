@@ -16,6 +16,8 @@ import {accountbookeraddress } from './booker-agent-address/booker-agent-address
 
 import {contracttemplateinfo } from './contract-template-info/contract-template-info';
 
+import {accountpartnersummary } from './account-partner-summary/account-partner-summary';
+import {accountreference } from './account-reference/account-reference';
 
 import {OrderInfo} from './order';
 import {OrderInfoService} from './order.service';
@@ -50,6 +52,8 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
   tnsaccountbilladdressP: accountbilladdress;
   tnsaccountbookeraddressP: accountbookeraddress;
   tnscontracttemplateinfoP: contracttemplateinfo;
+  accountpartnersummaryP: accountpartnersummary;
+  accountreferenceP: accountreference;
   OrderInfoP: OrderInfo;
 
   changeClass($event) {
@@ -68,6 +72,8 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
     this.tnsaccountbilladdressP = new accountbilladdress();
     this.tnsaccountbookeraddressP = new accountbookeraddress();
     this.tnscontracttemplateinfoP = new contracttemplateinfo();
+    this.accountpartnersummaryP = new accountpartnersummary();
+    this.accountreferenceP = new accountreference();
     this.OrderInfoP = new OrderInfo();
     
   }
@@ -88,7 +94,7 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
   }
 
   onOrderIdclicked(){
-    this._OrderInfoService.getorderInfo(Number(this.orderIdP),Number(this.accountIdP))
+    this._OrderInfoService.getorderInfo(Number(this.orderIdP))
     .subscribe((info)=>{
         this.OrderInfoP = info;
         
@@ -102,18 +108,18 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
         this.tnsaccountbookeraddressP.customerBookerId = 1;
         this.tnsaccountbookeraddressP.customerBookerName = this.OrderInfoP.bookerName;
         this.tnsaccountbookeraddressP.customerBookerContactName1 = this.OrderInfoP.contactName;
-        console.log(this.OrderInfoP.contactName);
-        console.log(this.tnsaccountbookeraddressP.customerBookerContactName1);
         this.tnsaccountbookeraddressP.customerBookerPhone = this.OrderInfoP.contactPhone;
         this.tnsaccountbookeraddressP.customerBookerExtn = "001";
+        this.tnsaccountbookeraddressP.customerBookersalesrep = this.OrderInfoP.salesPersonName;
+        this.tnsaccountbookeraddressP.customerBookerAccountRef = this.OrderInfoP.custRefNumber;
 
         this.tnsaccountbilladdressP.customerBillId = 1;
         this.tnsaccountbilladdressP.customerBillAddress1 = this.OrderInfoP.cbaddress1;
         this.tnsaccountbilladdressP.customerBillAddress2 = this.OrderInfoP.cbaddress2;
         this.tnsaccountbilladdressP.customerBillCity = this.OrderInfoP.cbcity;
         this.tnsaccountbilladdressP.customerBillZip = this.OrderInfoP.cbzip;
-        this.tnsaccountbilladdressP.customerBillState = this.OrderInfoP.cbstateId;
-        this.tnsaccountbilladdressP.customerBillCountry = "USA";
+        this.tnsaccountbilladdressP.customerBillState = this.OrderInfoP.cbStateName;
+        this.tnsaccountbilladdressP.customerBillCountry = this.OrderInfoP.cbCountryName;
 
         this.tnscontracttemplateinfoP.accounttemplateId = 1;
         this.tnscontracttemplateinfoP.accountServiceLevel = this.OrderInfoP.serviceLevelID;
@@ -122,7 +128,26 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
         this.tnscontracttemplateinfoP.accountcarrierPRONumber = this.OrderInfoP.carrierProNbr;
         this.tnscontracttemplateinfoP.accountcarrierPONumber = this.OrderInfoP.pONumber;
 
+        this.accountpartnersummaryP.partnerId=this.OrderInfoP.partnerId;
+        this.accountpartnersummaryP.performingPartner=this.OrderInfoP.performingPartner;
+        this.accountpartnersummaryP.partnerAddress1=this.OrderInfoP.partnerAddress1;
+        this.accountpartnersummaryP.partnerAddress2=this.OrderInfoP.partnerAddress2;
+        this.accountpartnersummaryP.partnerCity=this.OrderInfoP.partnerCity;
+        this.accountpartnersummaryP.partnerStateId=this.OrderInfoP.partnerStateId;
+        this.accountpartnersummaryP.partnerStateName=this.OrderInfoP.partnerStateName;
+        this.accountpartnersummaryP.partnerZip=this.OrderInfoP.partnerZip;
+        this.accountpartnersummaryP.partnerMainPhone=this.OrderInfoP.partnerMainPhone;
+        this.accountpartnersummaryP.partnerMainFax=this.OrderInfoP.partnerMainFax;
+        this.accountpartnersummaryP.partnerContact=this.OrderInfoP.partnerContact;
+        this.accountpartnersummaryP.partnerEmail=this.OrderInfoP.partnerEmail;
+        this.accountpartnersummaryP.partnerCountryId=this.OrderInfoP.partnerCountryId;
+        this.accountpartnersummaryP.partnerCountryName=this.OrderInfoP.partnerCountryName;
 
+        this.accountreferenceP.bosContract = this.OrderInfoP.bosContract;
+        this.accountreferenceP.fmbosContract = this.OrderInfoP.fmbosContract;         
+        this.accountreferenceP.custRefNumber = this.OrderInfoP.custRefNumber;
+        this.accountreferenceP.carrierProNbr = this.OrderInfoP.carrierProNbr;
+        this.accountreferenceP.pONumber = this.OrderInfoP.pONumber;
         //for (let entry of info) {
         //}
       }
