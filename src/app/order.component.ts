@@ -7,19 +7,20 @@ import { Country, State } from './country';
 import { Address } from './address';
 import {AccountAddressService} from './account-address/account-address.service';
 import {accountaddress} from './account-address/account-address';
-
 import {AccountBillAddressService } from './account-bill-address/account-bill-address.service';
 import {accountbilladdress} from './account-bill-address/account-bill-address';
-
 import {AccountBookerAddressService } from './booker-agent-address/booker-agent-address.service';
 import {accountbookeraddress } from './booker-agent-address/booker-agent-address';
-
 import {contracttemplateinfo } from './contract-template-info/contract-template-info';
-
 import {accountpartnersummary } from './account-partner-summary/account-partner-summary';
 import {accountreference } from './account-reference/account-reference';
 
-import {OrderInfo} from './order';
+import {accountoriginaddress } from './account-origin-detail/account-origin-detail';
+import {accountdestinationaddress } from './account-destination-detail/account-destination-detail';
+import {accountpartnerinfo } from './account-add-partner-info/account-add-partner-info';
+
+
+import {OrderInfo, OrderShippingInfo} from './order';
 import {OrderInfoService} from './order.service';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -54,7 +55,11 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
   tnscontracttemplateinfoP: contracttemplateinfo;
   accountpartnersummaryP: accountpartnersummary;
   accountreferenceP: accountreference;
+  tnsaccountoriginaddressP: accountoriginaddress;
+  tnsaccountdestinationaddressP: accountdestinationaddress;
+  tnsaccountpartnerinfoP: accountpartnerinfo;
   OrderInfoP: OrderInfo;
+  OrderShippingInfoP: OrderShippingInfo;
 
   changeClass($event) {
       this.over = $event.type == 'mouseenter' ? 'over' : '';
@@ -74,8 +79,11 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
     this.tnscontracttemplateinfoP = new contracttemplateinfo();
     this.accountpartnersummaryP = new accountpartnersummary();
     this.accountreferenceP = new accountreference();
+    this.tnsaccountoriginaddressP = new accountoriginaddress();
     this.OrderInfoP = new OrderInfo();
-    
+    this.OrderShippingInfoP = new OrderShippingInfo();
+    this.tnsaccountdestinationaddressP = new accountdestinationaddress();
+    this.tnsaccountpartnerinfoP = new accountpartnerinfo();
   }
 
   clicked(){
@@ -150,6 +158,54 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
         this.accountreferenceP.pONumber = this.OrderInfoP.pONumber;
         //for (let entry of info) {
         //}
+        this.onShippingInfoclicked();
+      }
+    );
+  }
+
+  onShippingInfoclicked(){
+    this._OrderInfoService.getordershippingInfo(Number(this.orderIdP))
+    .subscribe((info)=>{
+        this.OrderShippingInfoP = info;
+        
+        this.tnsaccountoriginaddressP.oaddress1 = this.OrderShippingInfoP.oaddress1;
+        this.tnsaccountoriginaddressP.oaddress2 = this.OrderShippingInfoP.oaddress2;
+        this.tnsaccountoriginaddressP.ocity = this.OrderShippingInfoP.ocity;
+        this.tnsaccountoriginaddressP.ozip = this.OrderShippingInfoP.ozip;
+        this.tnsaccountoriginaddressP.ostateId = this.OrderShippingInfoP.ostateId;
+        this.tnsaccountoriginaddressP.ocountrycode = this.OrderShippingInfoP.ocountrycode;
+        this.tnsaccountoriginaddressP.oName = this.OrderShippingInfoP.oName;
+        this.tnsaccountoriginaddressP.oPhone = this.OrderShippingInfoP.oPhone;
+        this.tnsaccountoriginaddressP.oCellPhone = this.OrderShippingInfoP.oCellPhone;
+        this.tnsaccountoriginaddressP.oEmail = this.OrderShippingInfoP.oEmail;
+        this.tnsaccountoriginaddressP.oWorkphone = this.OrderShippingInfoP.oEmail;
+        
+        this.tnsaccountdestinationaddressP.daddress1 = this.OrderShippingInfoP.daddress1;
+        this.tnsaccountdestinationaddressP.daddress2 = this.OrderShippingInfoP.daddress2;
+        this.tnsaccountdestinationaddressP.dcity = this.OrderShippingInfoP.dcity;
+        this.tnsaccountdestinationaddressP.dzip = this.OrderShippingInfoP.dzip;
+        this.tnsaccountdestinationaddressP.dstateId = this.OrderShippingInfoP.dstateId;
+        this.tnsaccountdestinationaddressP.dcountrycode = this.OrderShippingInfoP.dcountrycode;
+        this.tnsaccountdestinationaddressP.dName = this.OrderShippingInfoP.dName;
+        this.tnsaccountdestinationaddressP.dPhone = this.OrderShippingInfoP.dPhone;
+        this.tnsaccountdestinationaddressP.dCellPhone = this.OrderShippingInfoP.dCellPhone;
+        this.tnsaccountdestinationaddressP.dEmail = this.OrderShippingInfoP.dEmail;
+        this.tnsaccountdestinationaddressP.dWorkphone = this.OrderShippingInfoP.dEmail;
+
+        this.tnsaccountpartnerinfoP.partnerId=this.OrderShippingInfoP.partnerId;
+        this.tnsaccountpartnerinfoP.performingPartner=this.OrderShippingInfoP.performingPartner;
+        this.tnsaccountpartnerinfoP.partnerAddress1=this.OrderShippingInfoP.partnerAddress1;
+        this.tnsaccountpartnerinfoP.partnerAddress2=this.OrderShippingInfoP.partnerAddress2;
+        this.tnsaccountpartnerinfoP.partnerCity=this.OrderShippingInfoP.partnerCity;
+        this.tnsaccountpartnerinfoP.partnerStateId=this.OrderShippingInfoP.partnerStateId;
+        this.tnsaccountpartnerinfoP.partnerStateName=this.OrderShippingInfoP.partnerStateName;
+        this.tnsaccountpartnerinfoP.partnerZip=this.OrderShippingInfoP.partnerZip;
+        this.tnsaccountpartnerinfoP.partnerMainPhone=this.OrderShippingInfoP.partnerMainPhone;
+        this.tnsaccountpartnerinfoP.partnerMainFax=this.OrderShippingInfoP.partnerMainFax;
+        this.tnsaccountpartnerinfoP.partnerContact=this.OrderShippingInfoP.partnerContact;
+        this.tnsaccountpartnerinfoP.partnerEmail=this.OrderShippingInfoP.partnerEmail;
+        this.tnsaccountpartnerinfoP.partnerCountryId=this.OrderShippingInfoP.partnerCountryId;
+        this.tnsaccountpartnerinfoP.partnerCountryName=this.OrderShippingInfoP.partnerCountryName;
       }
     );
   }

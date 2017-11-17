@@ -19,6 +19,11 @@ import {OrderInfoService} from './order.service';
 import { ContractTemplateInfoComponent } from './contract-template-info/contract-template-info.component';
 import { AccountReferenceComponent } from './account-reference/account-reference.component';
 import { AccountPartnerSummaryComponent } from './account-partner-summary/account-partner-summary.component';
+import { AccountOriginDetailComponent } from './account-origin-detail/account-origin-detail.component';
+import { AccountDestinationDetailComponent } from './account-destination-detail/account-destination-detail.component';
+import { OriginContactInfoComponent } from './account-origin-detail/origin-contact-info/origin-contact-info.component';
+import { DestinationContactInfoComponent } from './account-destination-detail/destination-contact-info/destination-contact-info.component';
+import { AccountAddPartnerInfoComponent } from './account-add-partner-info/account-add-partner-info.component';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { AccountPartnerSummaryComponent } from './account-partner-summary/accoun
     AccountBillAddressComponent,
     ContractTemplateInfoComponent,
     AccountReferenceComponent,
-    AccountPartnerSummaryComponent
+    AccountPartnerSummaryComponent,
+    AccountOriginDetailComponent,
+    AccountDestinationDetailComponent,
+    OriginContactInfoComponent,
+    DestinationContactInfoComponent,
+    AccountAddPartnerInfoComponent
   ],
   imports: [
     BrowserModule,

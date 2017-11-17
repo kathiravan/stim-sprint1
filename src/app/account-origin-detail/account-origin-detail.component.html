@@ -1,0 +1,54 @@
+<h4 class="subtitle">Origin Details</h4>
+<div class="form-group">
+    <label for="tsWarehouse">Warehouse</label>
+    <select class="form-control" name="tsWarehouse">
+        <option>Warehouse1</option>
+        <option>Warehouse2</option>
+        <option>Warehouse3</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="tsAddress">Address</label>
+    <div class="inner-addon right-addon">
+        <input type="text" value="{{tnsaccountoriginaddress.oaddress1}}" class="form-control" name="tsAddress1" placeholder="Address Line 1">
+        <button class="btn btn-primary paste"><span class="glyphicon glyphicon-paste" data-target="#PasteUSAddressModalTS1" data-toggle="modal"></span></button>
+    </div>
+</div>
+<div class="form-group">
+    <label for="tsAddress">&nbsp;</label>
+    <input type="text" value="{{tnsaccountoriginaddress.oaddress2}}" class="form-control" name="tsAddress2" placeholder="Address Line 2">
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsCity">City</label>
+            <input type="text" value="{{tnsaccountoriginaddress.ocity}}"  name="tsCity" class="form-control" />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsPostalCode">Postal Code</label>
+            <input type="text" value="{{tnsaccountoriginaddress.ozip}}"  class="form-control" name="tsPostalCode">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsState">State</label>
+            <input type="text" value="{{tnsaccountoriginaddress.ostateId}}"  class="form-control" name="tsstate">
+            <!-- <select id="startstate" class="form-control" name="startstate" [(ngModel)]="p2pstate">
+                <option *ngFor="let c of states" value={{c.name}}>{{c.name}}</option>
+            </select> -->
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsCountry1">Country</label>
+            <input type="text" value="{{tnsaccountoriginaddress.ocountrycode}}" class="form-control" name="tscountry">
+            <!-- <select id="tsCountry1" class="form-control" name="tsCountry1" [(ngModel)]="p2pcountry">
+                <option *ngFor="let c of countries" value={{c.name}}>{{c.name}}</option>
+            </select> -->
+        </div>
+    </div>
+</div>

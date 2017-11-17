@@ -1,0 +1,54 @@
+<h4 class="subtitle">Consignee Details</h4>
+<div class="form-group">
+    <label for="tsNameSearch">Name</label>
+    <div class="inner-addon right-addon">
+        <input value="{{tnsaccountdestinationaddress.dName}}" type="text"  name="tsNameSearch" class="form-control" id="tsNameSearch" />
+        <button class="btn btn-primary search"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+</div>
+<div class="form-group">
+    <label for="tsAddress">Address</label>
+    <div class="inner-addon right-addon">
+        <input type="text" value="{{tnsaccountdestinationaddress.daddress1}}" class="form-control" name="tsAddress11" placeholder="Destination Address Line 1">
+        <button class="btn btn-primary paste"><span class="glyphicon glyphicon-paste" data-target="#PasteUSAddressModalTS2" data-toggle="modal"></span></button>
+    </div>
+</div>
+<div class="form-group">
+    <label for="tsAddress">&nbsp;</label>
+    <input type="text"  value="{{tnsaccountdestinationaddress.daddress2}}"  class="form-control" name="tsAddress2" placeholder="Address Line2">
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsCity">City</label>
+            <input value="{{tnsaccountdestinationaddress.dcity}}"   type="text" name="tsCity" class="form-control" />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsPostalCode">Postal Code</label>
+            <input value="{{tnsaccountdestinationaddress.dzip}}"  type="text" class="form-control" name="tsPostalCode">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsState">State</label>
+            <input type="text" value="{{tnsaccountdestinationaddress.dstateId}}"  class="form-control" name="tsstate">
+            <!-- <select id="startstate" class="form-control" name="startstate" [(ngModel)]="p2pstate">
+                <option *ngFor="let c of states" value={{c.name}}>{{c.name}}</option>
+            </select> -->
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+            <label for="tsCountry1">Country</label>
+            <input  type="text" value="{{tnsaccountdestinationaddress.dcountrycode}}"  class="form-control" name="tscountry">
+            <!-- <select id="tsCountry1" class="form-control" name="tsCountry1" [(ngModel)]="p2pcountry">
+                <option *ngFor="let c of countries" value={{c.name}}>{{c.name}}</option>
+            </select> -->
+        </div>
+    </div>
+</div>
