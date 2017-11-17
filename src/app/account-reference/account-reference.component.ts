@@ -8,6 +8,9 @@ import {accountreference} from './account-reference';
 })
 export class AccountReferenceComponent implements OnInit {
   @Input() tnsaccountreference: accountreference;
+  
+  claimFlag = '';
+  
   constructor() { 
    this.tnsaccountreference= new accountreference();
   }

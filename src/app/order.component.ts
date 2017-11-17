@@ -40,6 +40,10 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
 
   states = [new State(1, 'Indiana'), new State(2, 'New Jersey'), new State(3, 'North Carolina')];
 
+
+  p2pstate = '';
+  p2pcountry = '';
+
   localaddress: Address;
   localaddress2: Address;
   localaddress3: Address;
@@ -156,8 +160,6 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
         this.accountreferenceP.custRefNumber = this.OrderInfoP.custRefNumber;
         this.accountreferenceP.carrierProNbr = this.OrderInfoP.carrierProNbr;
         this.accountreferenceP.pONumber = this.OrderInfoP.pONumber;
-        //for (let entry of info) {
-        //}
         this.onShippingInfoclicked();
       }
     );
