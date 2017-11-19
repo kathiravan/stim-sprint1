@@ -26,6 +26,8 @@ export class OrderInfo {
  public salesrep: string;
  public scacid: string;
  public serviceLevelID: number;
+ public orderTemplate: string;
+ public serviceLevelDesc: string;
 
  public partnerId:number;
  public performingPartner:string;
@@ -78,7 +80,9 @@ export class OrderInfo {
   this.salesrep = "";
   this.scacid = "";
   this.serviceLevelID = -1;
-  
+  this.orderTemplate = "";;
+  this.serviceLevelDesc = "";
+
   this.partnerId=-1;
   this.performingPartner="";
   this.partnerAddress1="";
@@ -100,6 +104,7 @@ export class OrderInfo {
   this.cbCountryName="";
   this.countryName="";
   this.partnerCountryName="";
+
  }
 }
 

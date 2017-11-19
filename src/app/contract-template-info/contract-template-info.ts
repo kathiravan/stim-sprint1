@@ -5,6 +5,8 @@ export class contracttemplateinfo {
     public accountdeliverydate: string;
     public accountcarrierPRONumber: string;
     public accountcarrierPONumber: string;
+    public orderTemplate: string;
+    public serviceLevelDesc: string;
 
     constructor(){
         this.accounttemplateId = -1;
@@ -13,5 +15,7 @@ export class contracttemplateinfo {
         this.accountdeliverydate = "";
         this.accountcarrierPRONumber = "";
         this.accountcarrierPONumber = "";
+        this.orderTemplate = "";;
+        this.serviceLevelDesc = "";
     }
 }

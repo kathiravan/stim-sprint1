@@ -18,7 +18,7 @@ import {accountreference } from './account-reference/account-reference';
 import {accountoriginaddress } from './account-origin-detail/account-origin-detail';
 import {accountdestinationaddress } from './account-destination-detail/account-destination-detail';
 import {accountpartnerinfo } from './account-add-partner-info/account-add-partner-info';
-
+import { Consignment } from './consignment'
 
 import {OrderInfo, OrderShippingInfo} from './order';
 import {OrderInfoService} from './order.service';
@@ -64,6 +64,9 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
   tnsaccountpartnerinfoP: accountpartnerinfo;
   OrderInfoP: OrderInfo;
   OrderShippingInfoP: OrderShippingInfo;
+  consignmentInfo : any;
+  consignment : Consignment;
+  products : any;
 
   changeClass($event) {
       this.over = $event.type == 'mouseenter' ? 'over' : '';
@@ -88,6 +91,7 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
     this.OrderShippingInfoP = new OrderShippingInfo();
     this.tnsaccountdestinationaddressP = new accountdestinationaddress();
     this.tnsaccountpartnerinfoP = new accountpartnerinfo();
+    this.consignment = new Consignment();
   }
 
   clicked(){
@@ -110,65 +114,88 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
     .subscribe((info)=>{
         this.OrderInfoP = info;
         
-        this.tnsaddressP.customerId = Number(this.OrderInfoP.customerid);
-        this.tnsaddressP.customerName = this.OrderInfoP.customerName;
-        this.tnsaddressP.customerContactName = this.OrderInfoP.contactName;
-        this.tnsaddressP.customerMainPhone = this.OrderInfoP.cbmainPhone;
-        this.tnsaddressP.customerSCACId = this.OrderInfoP.scacid;
+        this.tnsaddressP.customerId = Number(this.OrderInfoP[0].customerid);
+        this.tnsaddressP.customerName = this.OrderInfoP[0].customerName;
+        this.tnsaddressP.customerContactName = this.OrderInfoP[0].contactName;
+        this.tnsaddressP.customerMainPhone = this.OrderInfoP[0].cbmainPhone;
+        this.tnsaddressP.customerSCACId = this.OrderInfoP[0].scacid;
         this.tnsaddressP.customerExtn = "001";
 
         this.tnsaccountbookeraddressP.customerBookerId = 1;
-        this.tnsaccountbookeraddressP.customerBookerName = this.OrderInfoP.bookerName;
-        this.tnsaccountbookeraddressP.customerBookerContactName1 = this.OrderInfoP.contactName;
-        this.tnsaccountbookeraddressP.customerBookerPhone = this.OrderInfoP.contactPhone;
+        this.tnsaccountbookeraddressP.customerBookerName = this.OrderInfoP[0].bookerName;
+        this.tnsaccountbookeraddressP.customerBookerContactName1 = this.OrderInfoP[0].contactName;
+        this.tnsaccountbookeraddressP.customerBookerPhone = this.OrderInfoP[0].contactPhone;
         this.tnsaccountbookeraddressP.customerBookerExtn = "001";
-        this.tnsaccountbookeraddressP.customerBookersalesrep = this.OrderInfoP.salesPersonName;
-        this.tnsaccountbookeraddressP.customerBookerAccountRef = this.OrderInfoP.custRefNumber;
+        this.tnsaccountbookeraddressP.customerBookersalesrep = this.OrderInfoP[0].salesPersonName;
+        this.tnsaccountbookeraddressP.customerBookerAccountRef = this.OrderInfoP[0].custRefNumber;
 
         this.tnsaccountbilladdressP.customerBillId = 1;
-        this.tnsaccountbilladdressP.customerBillAddress1 = this.OrderInfoP.cbaddress1;
-        this.tnsaccountbilladdressP.customerBillAddress2 = this.OrderInfoP.cbaddress2;
-        this.tnsaccountbilladdressP.customerBillCity = this.OrderInfoP.cbcity;
-        this.tnsaccountbilladdressP.customerBillZip = this.OrderInfoP.cbzip;
-        this.tnsaccountbilladdressP.customerBillState = this.OrderInfoP.cbStateName;
-        this.tnsaccountbilladdressP.customerBillCountry = this.OrderInfoP.cbCountryName;
+        this.tnsaccountbilladdressP.customerBillAddress1 = this.OrderInfoP[0].cbaddress1;
+        this.tnsaccountbilladdressP.customerBillAddress2 = this.OrderInfoP[0].cbaddress2;
+        this.tnsaccountbilladdressP.customerBillCity = this.OrderInfoP[0].cbcity;
+        this.tnsaccountbilladdressP.customerBillZip = this.OrderInfoP[0].cbzip;
+        this.tnsaccountbilladdressP.customerBillState = this.OrderInfoP[0].cbStateName;
+        this.tnsaccountbilladdressP.customerBillCountry = this.OrderInfoP[0].cbCountryName;
 
         this.tnscontracttemplateinfoP.accounttemplateId = 1;
-        this.tnscontracttemplateinfoP.accountServiceLevel = this.OrderInfoP.serviceLevelID;
-        this.tnscontracttemplateinfoP.accountFreightdate = this.OrderInfoP.freightAvailable;
-        this.tnscontracttemplateinfoP.accountdeliverydate = this.OrderInfoP.deliveryDate;
-        this.tnscontracttemplateinfoP.accountcarrierPRONumber = this.OrderInfoP.carrierProNbr;
-        this.tnscontracttemplateinfoP.accountcarrierPONumber = this.OrderInfoP.pONumber;
+        this.tnscontracttemplateinfoP.accountServiceLevel = this.OrderInfoP[0].serviceLevelID;
+        this.tnscontracttemplateinfoP.orderTemplate = this.OrderInfoP[0].orderTemplate;
+        this.tnscontracttemplateinfoP.serviceLevelDesc = this.OrderInfoP[0].serviceLevelDesc;
+        
+        
+        this.tnscontracttemplateinfoP.accountFreightdate = this.OrderInfoP[0].freightAvailable;
+        this.tnscontracttemplateinfoP.accountdeliverydate = this.OrderInfoP[0].deliveryDate;
+        this.tnscontracttemplateinfoP.accountcarrierPRONumber = this.OrderInfoP[0].carrierProNbr;
+        this.tnscontracttemplateinfoP.accountcarrierPONumber = this.OrderInfoP[0].pONumber;
 
-        this.accountpartnersummaryP.partnerId=this.OrderInfoP.partnerId;
-        this.accountpartnersummaryP.performingPartner=this.OrderInfoP.performingPartner;
-        this.accountpartnersummaryP.partnerAddress1=this.OrderInfoP.partnerAddress1;
-        this.accountpartnersummaryP.partnerAddress2=this.OrderInfoP.partnerAddress2;
-        this.accountpartnersummaryP.partnerCity=this.OrderInfoP.partnerCity;
-        this.accountpartnersummaryP.partnerStateId=this.OrderInfoP.partnerStateId;
-        this.accountpartnersummaryP.partnerStateName=this.OrderInfoP.partnerStateName;
-        this.accountpartnersummaryP.partnerZip=this.OrderInfoP.partnerZip;
-        this.accountpartnersummaryP.partnerMainPhone=this.OrderInfoP.partnerMainPhone;
-        this.accountpartnersummaryP.partnerMainFax=this.OrderInfoP.partnerMainFax;
-        this.accountpartnersummaryP.partnerContact=this.OrderInfoP.partnerContact;
-        this.accountpartnersummaryP.partnerEmail=this.OrderInfoP.partnerEmail;
-        this.accountpartnersummaryP.partnerCountryId=this.OrderInfoP.partnerCountryId;
-        this.accountpartnersummaryP.partnerCountryName=this.OrderInfoP.partnerCountryName;
+        this.accountpartnersummaryP.partnerId=this.OrderInfoP[0].partnerId;
+        this.accountpartnersummaryP.performingPartner=this.OrderInfoP[0].performingPartner;
+        this.accountpartnersummaryP.partnerAddress1=this.OrderInfoP[0].partnerAddress1;
+        this.accountpartnersummaryP.partnerAddress2=this.OrderInfoP[0].partnerAddress2;
+        this.accountpartnersummaryP.partnerCity=this.OrderInfoP[0].partnerCity;
+        this.accountpartnersummaryP.partnerStateId=this.OrderInfoP[0].partnerStateId;
+        this.accountpartnersummaryP.partnerStateName=this.OrderInfoP[0].partnerStateName;
+        this.accountpartnersummaryP.partnerZip=this.OrderInfoP[0].partnerZip;
+        this.accountpartnersummaryP.partnerMainPhone=this.OrderInfoP[0].partnerMainPhone;
+        this.accountpartnersummaryP.partnerMainFax=this.OrderInfoP[0].partnerMainFax;
+        this.accountpartnersummaryP.partnerContact=this.OrderInfoP[0].partnerContact;
+        this.accountpartnersummaryP.partnerEmail=this.OrderInfoP[0].partnerEmail;
+        this.accountpartnersummaryP.partnerCountryId=this.OrderInfoP[0].partnerCountryId;
+        this.accountpartnersummaryP.partnerCountryName=this.OrderInfoP[0].partnerCountryName;
 
-        this.accountreferenceP.bosContract = this.OrderInfoP.bosContract;
-        this.accountreferenceP.fmbosContract = this.OrderInfoP.fmbosContract;         
-        this.accountreferenceP.custRefNumber = this.OrderInfoP.custRefNumber;
-        this.accountreferenceP.carrierProNbr = this.OrderInfoP.carrierProNbr;
-        this.accountreferenceP.pONumber = this.OrderInfoP.pONumber;
-        this.onShippingInfoclicked();
+        this.tnsaccountpartnerinfoP.partnerId=this.OrderInfoP[0].partnerId;
+        this.tnsaccountpartnerinfoP.performingPartner=this.OrderInfoP[0].performingPartner;
+        this.tnsaccountpartnerinfoP.partnerAddress1=this.OrderInfoP[0].partnerAddress1;
+        this.tnsaccountpartnerinfoP.partnerAddress2=this.OrderInfoP[0].partnerAddress2;
+        this.tnsaccountpartnerinfoP.partnerCity=this.OrderInfoP[0].partnerCity;
+        this.tnsaccountpartnerinfoP.partnerStateId=this.OrderInfoP[0].partnerStateId;
+        this.tnsaccountpartnerinfoP.partnerStateName=this.OrderInfoP[0].partnerStateName;
+        this.tnsaccountpartnerinfoP.partnerZip=this.OrderInfoP[0].partnerZip;
+        this.tnsaccountpartnerinfoP.partnerMainPhone=this.OrderInfoP[0].partnerMainPhone;
+        this.tnsaccountpartnerinfoP.partnerMainFax=this.OrderInfoP[0].partnerMainFax;
+        this.tnsaccountpartnerinfoP.partnerContact=this.OrderInfoP[0].partnerContact;
+        this.tnsaccountpartnerinfoP.partnerEmail=this.OrderInfoP[0].partnerEmail;
+        this.tnsaccountpartnerinfoP.partnerCountryId=this.OrderInfoP[0].partnerCountryId;
+        this.tnsaccountpartnerinfoP.partnerCountryName=this.OrderInfoP[0].partnerCountryName;
+
+        this.accountreferenceP.bosContract = this.OrderInfoP[0].bosContract;
+        this.accountreferenceP.fmbosContract = this.OrderInfoP[0].fmbosContract;         
+        this.accountreferenceP.custRefNumber = this.OrderInfoP[0].custRefNumber;
+        this.accountreferenceP.carrierProNbr = this.OrderInfoP[0].carrierProNbr;
+        this.accountreferenceP.pONumber = this.OrderInfoP[0].pONumber;
+        this.OrderShippingInfoP = info[1];
+        console.log(info);
+        this.consignmentInfo = info;
+        this.onShippingInfoclicked(this.OrderShippingInfoP);
+        this.consignmentTabClicked(this.consignment);
       }
     );
   }
 
-  onShippingInfoclicked(){
-    this._OrderInfoService.getordershippingInfo(Number(this.orderIdP))
-    .subscribe((info)=>{
-        this.OrderShippingInfoP = info;
+  onShippingInfoclicked(OrderShippingInfoP){
+    //this._OrderInfoService.getordershippingInfo(Number(this.orderIdP))
+    //.subscribe((info)=>{
+        
         
         this.tnsaccountoriginaddressP.oaddress1 = this.OrderShippingInfoP.oaddress1;
         this.tnsaccountoriginaddressP.oaddress2 = this.OrderShippingInfoP.oaddress2;
@@ -194,22 +221,21 @@ export class OrderComponent implements OnInit, AfterViewChecked, AfterViewInit {
         this.tnsaccountdestinationaddressP.dEmail = this.OrderShippingInfoP.dEmail;
         this.tnsaccountdestinationaddressP.dWorkphone = this.OrderShippingInfoP.dEmail;
 
-        this.tnsaccountpartnerinfoP.partnerId=this.OrderShippingInfoP.partnerId;
-        this.tnsaccountpartnerinfoP.performingPartner=this.OrderShippingInfoP.performingPartner;
-        this.tnsaccountpartnerinfoP.partnerAddress1=this.OrderShippingInfoP.partnerAddress1;
-        this.tnsaccountpartnerinfoP.partnerAddress2=this.OrderShippingInfoP.partnerAddress2;
-        this.tnsaccountpartnerinfoP.partnerCity=this.OrderShippingInfoP.partnerCity;
-        this.tnsaccountpartnerinfoP.partnerStateId=this.OrderShippingInfoP.partnerStateId;
-        this.tnsaccountpartnerinfoP.partnerStateName=this.OrderShippingInfoP.partnerStateName;
-        this.tnsaccountpartnerinfoP.partnerZip=this.OrderShippingInfoP.partnerZip;
-        this.tnsaccountpartnerinfoP.partnerMainPhone=this.OrderShippingInfoP.partnerMainPhone;
-        this.tnsaccountpartnerinfoP.partnerMainFax=this.OrderShippingInfoP.partnerMainFax;
-        this.tnsaccountpartnerinfoP.partnerContact=this.OrderShippingInfoP.partnerContact;
-        this.tnsaccountpartnerinfoP.partnerEmail=this.OrderShippingInfoP.partnerEmail;
-        this.tnsaccountpartnerinfoP.partnerCountryId=this.OrderShippingInfoP.partnerCountryId;
-        this.tnsaccountpartnerinfoP.partnerCountryName=this.OrderShippingInfoP.partnerCountryName;
-      }
-    );
+ 
+      //}
+    //);
+  }
+
+  consignmentTabClicked(consignmentInfo) {
+    console.log("yes");
+    console.log(this.consignmentInfo);
+    // this._OrderInfoService.getconsignmentInfo(Number(this.consignmentInfo))
+    //   .subscribe((info) => {
+        //this.consignmentInfo = info;
+        this.consignment = this.consignmentInfo[0];
+        this.products = this.consignmentInfo[2];        
+        console.log("products: "+this.products[0].productDescription);
+     // });
   }
 
   ngOnInit() {

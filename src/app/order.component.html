@@ -2212,181 +2212,184 @@
 
                                             </div>
                                         </div>
-                                        <div id="productInformation" class="tab-pane fade">
-                                            <div class="tab-body">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="text-center">
-                                                            <div class="load-dates">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12 ">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="tsServiceLevel">Service Level</label>
-                                                                                    <select class="form-control" name="tsServiceLevel">
-                                                                                        <option>Service Level 1</option>
-                                                                                        <option>Service Level 2</option>
-                                                                                        <option>Service Level 3</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="tsPdtFreigthAvailDate">Freight Available Date</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsPdtFreigthAvailDate');"></span>
-                                                                                        <input class="form-control" id="tsPdtFreigthAvailDate">
-                                                                                    </div>
-                                                                                    <label>&nbsp;</label>
-                                                                                    <a href="#" class="btn btn-primary pull-right">Extend Date</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- <div class="clearfix hr-divider">&nbsp;</div>  -->
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="tsOrdActSetDate">Estimated Delivery Date</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsOrdActSetDate');"></span>
-                                                                                        <input class="form-control" id="tsOrdActSetDate" />
+                                        <div id="productInformation" class="tab-pane fade" >
+                                                <div class="tab-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="text-center">
+                                                                <div class="load-dates">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsServiceLevel">Service Level</label>
+                                                                                        <!--<select class="form-control" name="tsServiceLevel">
+                                                                                            <option>Service Level 1</option>
+                                                                                            <option>Service Level 2</option>
+                                                                                            <option>Service Level 3</option>
+                                                                                        </select>-->
+                                                                                        <input type="text" name="tsServiceLevel" id="tsServiceLevel" [(ngModel)]="consignment.serviceLevelDesc" />
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="tsOrdTransport">Transportation Type</label>
-                                                                                    <select class="form-control">
-                                                                                        <option>Option1</option>
-                                                                                        <option>Option2</option>
-                                                                                        <option>Option3</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="tsReqDelivTime">Requested Delivery Time</label>
-                                                                                    <input class="form-control" type="text" name="tsReqDelivTime" placeholder="HH:MM" />
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label>&nbsp;</label>
-                                                                                    <label for="tsWillAdvice" class="checkbox-right"><span>Will Advice</span><input type="checkbox" name="tsWillAdvice" class="form-control" /></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- <div class="clearfix hr-divider">&nbsp;</div>  -->
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <h4 class="subtitle">Load and Delivery Spread From</h4>
-                                                                                <div class="form-group">
-                                                                                    <label for="tsPickDateFrom">Pick-Up Date From</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsPickDateFrom');"></span>
-                                                                                        <input class="form-control" id="tsPickDateFrom" />
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="tsDeliveryDateFrom">Delivery Date From</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsDeliveryDateFrom');"></span>
-                                                                                        <input class="form-control" id="tsDeliveryDateFrom" />
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsPdtFreigthAvailDate">Freight Available Date</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsPdtFreigthAvailDate');"></span>
+                                                                                            <input class="form-control" id="tsPdtFreigthAvailDate" [(ngModel)] = "consignment.freightAvailable">
+                                                                                        </div>
+                                                                                        <label>&nbsp;</label>
+                                                                                        <a href="#" class="btn btn-primary pull-right">Extend Date</a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <h4 class="subtitle">Load and Delivery Spread To</h4>
-                                                                                <div class="form-group">
-                                                                                    <label for="tsPickDateTo">Pick-Up Date To</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsPickDateTo');"></span>
-                                                                                        <input class="form-control" id="tsPickDateTo" />
+                                                                            <!-- <div class="clearfix hr-divider">&nbsp;</div>  -->
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsOrdActSetDate">Estimated Delivery Date</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsOrdActSetDate');"></span>
+                                                                                            <input class="form-control" id="tsOrdActSetDate" [(ngModel)] = "consignment.estimatedDeliveryDate" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsOrdTransport">Transportation Type</label>
+                                                                                        <!--<select class="form-control">
+                                                                                            <option>Option1</option>
+                                                                                            <option>Option2</option>
+                                                                                            <option>Option3</option>
+                                                                                        </select>-->
+                                                                                        <input type="text" name="tsOrdTransport" id="tsOrdTransport" [(ngModel)]="consignment.transpotationType" />
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="tsDeliveryDateTo">Delivery Date To</label>
-                                                                                    <div class="inline-addon left-addon">
-                                                                                        <span class="fa fa-calendar" onclick="calendar('tsDeliveryDateTo');"></span>
-                                                                                        <input class="form-control" id="tsDeliveryDateTo" />
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsReqDelivTime">Requested Delivery Time</label>
+                                                                                        <input class="form-control" type="text" name="tsReqDelivTime" placeholder="HH:MM" [(ngModel)] = "consignment.requestedDeliveryTime"/>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>&nbsp;</label>
+                                                                                        <label for="tsWillAdvice" class="checkbox-right"><span>Will Advice</span><input type="checkbox" name="tsWillAdvice" class="form-control" [(ngModel)]="consignment.willAdvice"/></label>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-sm-6">&nbsp;</div>
-                                                                            <div class="col-xs-12 col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="totalServiceCharges">Total Service Charges</label>
-                                                                                    <input type="text" name="totalServiceCharges" class="form-control width-calc-5" />
-                                                                                    <span class="unit-text bottom0"><span class="pull-left unit-letters">.</span><input type="text" class="form-control width-1-4" /></span>
+                                                                            <!-- <div class="clearfix hr-divider">&nbsp;</div>  -->
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <h4 class="subtitle">Load and Delivery Spread From</h4>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsPickDateFrom">Pick-Up Date From</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsPickDateFrom');"></span>
+                                                                                            <input class="form-control" id="tsPickDateFrom" [(ngModel)] = "consignment.loadPick_Up_Date_From"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsDeliveryDateFrom">Delivery Date From</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsDeliveryDateFrom');"></span>
+                                                                                            <input class="form-control" id="tsDeliveryDateFrom" [(ngModel)] = "consignment.deliveryDate_From"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <h4 class="subtitle">Load and Delivery Spread To</h4>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsPickDateTo">Pick-Up Date To</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsPickDateTo');"></span>
+                                                                                            <input class="form-control" id="tsPickDateTo" [(ngModel)] = "consignment.loadPick_Up_Date_To"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tsDeliveryDateTo">Delivery Date To</label>
+                                                                                        <div class="inline-addon left-addon">
+                                                                                            <span class="fa fa-calendar" onclick="calendar('tsDeliveryDateTo');"></span>
+                                                                                            <input class="form-control" id="tsDeliveryDateTo" [(ngModel)] = "consignment.deliveryDate_To"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-sm-6">&nbsp;</div>
+                                                                                <div class="col-xs-12 col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="totalServiceCharges">Total Service Charges</label>
+                                                                                        <input type="text" name="totalServiceCharges" class="form-control width-calc-5" [(ngModel)] = "consignment.totalServiceCharge"/>
+                                                                                        <span class="unit-text bottom0"><span class="pull-left unit-letters">.</span><input type="text" class="form-control width-1-4" /></span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <button class="btn btn-primary">Copy from Existing Contract</button>
-                                                        <table class="add-table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 14%;">Product</th>
-                                                                    <th style="width: 18%;">Product Description</th>
-                                                                    <th style="width: 6%;">Quantity</th>
-                                                                    <th style="width: 6%;"># of Pieces</th>
-                                                                    <th style="width: 6%;">Cubes</th>
-                                                                    <th style="width: 6%;">Total Weight</th>
-                                                                    <th style="width: 6%;">NMFC</th>
-                                                                    <th style="width: 6%;">Model Number</th>
-                                                                    <th style="width: 7%;">Serial Number</th>
-                                                                    <th style="width: 6%;">ITN</th>
-                                                                    <th style="width: 6%;">INT In Date</th>
-                                                                    <th style="width: 7%;">Assembly Minutes</th>
-                                                                    <th style="width: 6%;">Nbr Of People</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="invoiceTr">
-                                                                <tr>
-                                                                    <td>
-                                                                        <select class="form-control">
-                                                                            <option>4444</option>
-                                                                            <option>Fedex</option>
-                                                                            <option>Elite</option>
-                                                                            <option>Interp</option>
-                                                                            <option>Test</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        Furniture 700-800 LBS
-                                                                    </td>
-                                                                    <td>
-                                                                        <input type="text" [(ngModel)]="tnsproductqty" name="pdt-qty" class="form-control" id="pdt-qty" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <input type="text" name="pdt-pieces" class="form-control" id="pdt-pieces" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <input type="text" name="pdt-cubes" class="form-control" id="pdt-cubes" />
-                                                                    </td>
-                                                                    <td>799</td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td>0</td>
-                                                                    <td>0</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="form-group">
-                                                            <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal"><span class="fa fa-plus"></span> Add Product ++ Details</a>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <a href="javascript:void(0)" class="btn btn-primary"><span class="fa fa-plus"></span> Add New Product for Customer</a>
+                                                            <button class="btn btn-primary">Copy from Existing Contract</button>
+                                                            <table class="add-table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width: 14%;">Product</th>
+                                                                        <th style="width: 18%;">Product Description</th>
+                                                                        <th style="width: 6%;">Quantity</th>
+                                                                        <th style="width: 6%;"># of Pieces</th>
+                                                                        <th style="width: 6%;">Cubes</th>
+                                                                        <th style="width: 6%;">Total Weight</th>
+                                                                        <th style="width: 6%;">NMFC</th>
+                                                                        <th style="width: 6%;">Model Number</th>
+                                                                        <th style="width: 7%;">Serial Number</th>
+                                                                        <th style="width: 6%;">ITN</th>
+                                                                        <th style="width: 6%;">INT In Date</th>
+                                                                        <th style="width: 7%;">Assembly Minutes</th>
+                                                                        <th style="width: 6%;">Nbr Of People</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="invoiceTr" >
+                                                                    <tr *ngFor="let product of products">
+                                                                        <td>
+                                                                            <!--<select class="form-control">
+                                                                                <option>4444</option>
+                                                                                <option>Fedex</option>
+                                                                                <option>Elite</option>
+                                                                                <option>Interp</option>
+                                                                                <option>Test</option>
+                                                                            </select>-->
+                                                                            {{product.productNumber}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{product.productDescription}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{product.pieces}}<!--<input type="text" [(ngModel)]="product.productDescription" name="pdt-qty" class="form-control" id="pdt-qty" />-->
+                                                                        </td>
+                                                                        <td>
+                                                                            {{product.pieces}}<!--<input type="text" [(ngModel)]="product.pieces" name="pdt-pieces" class="form-control" id="pdt-pieces" />-->
+                                                                        </td>
+                                                                        <td>
+                                                                            {{product.cubes}}<!--<input type="text" [(ngModel)]="product.cubes" name="pdt-cubes" class="form-control" id="pdt-cubes" />-->
+                                                                        </td>
+                                                                        <td>{{product.weight}}</td>
+                                                                        <td>{{product.nMFC}}</td>
+                                                                        <td>{{product.modelNumber}}</td>
+                                                                        <td>{{product.serialNumber}}</td>
+                                                                        <td>{{product.iTN}}</td>
+                                                                        <td>{{product.iTNInDate}}</td>
+                                                                        <td>{{product.pieces}}</td>
+                                                                        <td>{{product.pieces}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="form-group">
+                                                                <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal"><span class="fa fa-plus"></span> Add Product ++ Details</a>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <a href="javascript:void(0)" class="btn btn-primary"><span class="fa fa-plus"></span> Add New Product for Customer</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <div id="accessorials" class="tab-pane fade">
                                             <div class="tab-body">
                                                 <div class="partner-information">
